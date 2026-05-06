@@ -1,0 +1,864 @@
+/* ========================================
+   コース詳細ページ共通スタイル
+   theme-basic / theme-advance / theme-workshop
+   ======================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.course-detail-page {
+  font-family: 'Noto Serif JP', serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+.course-detail-page a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+.course-detail-page ul { list-style: none; }
+.course-detail-page img { max-width: 100%; height: auto; }
+
+.pc-only { display: block; }
+.sp-only { display: none; }
+br.sp-only { display: none; }
+
+/* --- ヘッダー・フッターは common.css で定義 --- */
+
+/* --- Page Hero --- */
+.page-hero {
+  position: relative;
+  padding: 200px 20px 100px;
+  text-align: center;
+  background-color: #e2eef0;
+  overflow: hidden;
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 18vw;
+  font-weight: 700;
+  pointer-events: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.theme-basic .hero-bg-text { color: rgba(108, 154, 147, 0.05); }
+.theme-advance .hero-bg-text { color: rgba(197, 160, 89, 0.05); }
+.theme-workshop .hero-bg-text { color: rgba(230, 126, 34, 0.05); }
+
+.page-header-inner { position: relative; z-index: 1; }
+
+.course-label {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.theme-basic .course-label { color: #6c9a93; }
+.theme-advance .course-label { color: #c5a059; }
+.theme-workshop .course-label { color: #e67e22; }
+
+.page-title {
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.page-sub { font-size: 15px; color: #888; }
+
+.content-container { max-width: 900px; margin: 0 auto; padding: 0 30px; }
+.theme-advance .content-container,
+.theme-workshop .content-container { max-width: 960px; }
+
+.detail-section { margin-top: 120px; }
+
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+}
+
+.theme-basic .section-heading::after { background: #6c9a93; }
+.theme-advance .section-heading::after { background: #c5a059; }
+.theme-workshop .section-heading::after { background: #e67e22; }
+
+.section-lead { text-align: center; font-weight: 700; margin-bottom: 40px; color: #666; }
+.text-block p { line-height: 2; margin-bottom: 20px; text-align: justify; }
+
+/* --- Schedule Table --- */
+.schedule-table-wrapper { width: 100%; margin-bottom: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.schedule-table { width: 100%; border-collapse: collapse; min-width: 100%; }
+
+.schedule-table th,
+.schedule-table td {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.schedule-table th {
+  background-color: #f9f9f9;
+  font-weight: 500;
+  color: #666;
+  white-space: nowrap;
+}
+
+.schedule-table th.col-date { width: 15%; }
+.schedule-table th.col-time { width: 15%; }
+.schedule-table th.col-lecturer { width: 15%; }
+.schedule-table th.col-type { width: 10%; text-align: center; }
+.schedule-table th.col-content { width: auto; }
+/* 申込: 種別・日付・時間・講師・内容と同じ形式 */
+.schedule-table th.col-cta { text-align: center; font-weight: 500; color: #666; }
+
+/* eventページ: テーマ文言・時間・講師が入り切るよう列幅を調整 */
+.theme-workshop .schedule-table th.col-date { width: 10%; }
+.theme-workshop .schedule-table th.col-time { width: 15%; }
+.theme-workshop .schedule-table th.col-lecturer { width: 15%; }
+.theme-workshop .schedule-table th.col-type { width: 8%; }
+.theme-workshop .schedule-table th.col-content { width: 52%; min-width: 260px; }
+
+.schedule-table .count {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.theme-basic .schedule-table .count { color: #6c9a93; }
+.theme-advance .schedule-table .count { color: #c5a059; }
+
+.schedule-table .date { font-weight: 700; font-family: 'Playfair Display', serif; font-size: 16px; }
+.schedule-table .wday { font-size: 12px; font-weight: normal; margin-left: 3px; font-family: 'Noto Serif JP', serif; color: #888; }
+.schedule-table .time { font-family: 'Lato', sans-serif; color: #666; }
+.schedule-table .lecturer { font-weight: 700; }
+
+/* PC: Day・講師を1行表示 */
+@media (min-width: 769px) {
+  .schedule-table .count { white-space: nowrap; }
+  .schedule-table .lecturer { white-space: nowrap; }
+  .schedule-table th.col-lecturer { min-width: 130px; }
+}
+.schedule-table .place-sub { display: block; font-size: 11px; color: #999; margin-top: 4px; }
+
+.tag {
+  display: inline-block;
+  padding: 4px 0;
+  font-size: 11px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-family: 'Noto Serif JP', serif;
+  letter-spacing: 0.05em;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  width: 80px;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.tag.online { background: #eef6f9; color: #4a90e2; border-color: #4a90e2; }
+.tag.real { background: #fff5f5; color: #c0392b; border-color: #c0392b; }
+.tag.free { background: #eef9f6; color: #2ecc71; border-color: #2ecc71; width: 60px; font-size: 10px; font-weight: 700; font-family: 'Lato', sans-serif; }
+.tag.live { background: #fff5f5; color: #e74c3c; border-color: #e74c3c; width: 60px; font-size: 10px; font-weight: 700; font-family: 'Lato', sans-serif; }
+.tag.real.ws { background: #fff9ee; color: #d35400; border-color: #d35400; width: 60px; font-size: 10px; font-weight: 700; font-family: 'Lato', sans-serif; }
+
+.highlight-row { background-color: #fffaf5; }
+.alert-text { color: #c0392b; font-size: 11px; font-weight: 700; margin-left: 5px; }
+.note-text { font-size: 12px; color: #888; margin-top: 15px; text-align: right; display: block; }
+.note-text.note-accent { color: #c0392b; font-weight: 600; margin-top: 8px; }
+.table-workshops td .note-text { font-weight: 700; color: #333; font-size: 14px; }
+.content-cell { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; }
+.content-cell .text { display: block; }
+
+/* PC: 形式・内容を1行表示 */
+@media (min-width: 769px) {
+  .content-cell { flex-wrap: nowrap; white-space: nowrap; }
+  .content-cell .text { display: inline; white-space: nowrap; }
+}
+
+/* 無料体験会・YouTubeライブ表: 時間1行、講師2行(黒)、内容1行表示、申込ボタン */
+.note-inline { font-size: 12px; color: #888; }
+/* Free Events: スクロールではなく固定表示 */
+#free-events .schedule-table-wrapper { overflow: visible; }
+#free-events .table-free-events { table-layout: auto; width: 100%; }
+#free-events .table-free-events .content-inline { white-space: normal; }
+/* Free Events 申込列: Workshops と同じヘッダー背景・幅 */
+#free-events .table-free-events th.col-cta { background-color: #f9f9f9; width: 1%; min-width: 120px; white-space: nowrap; }
+.table-free-events .time { white-space: nowrap; }
+.table-free-events .lecturer { color: #333; }
+.table-free-events .lecturer.lecturer-two { white-space: normal; line-height: 1.5; }
+.table-free-events .cta-cell { vertical-align: middle; text-align: center; }
+/* Free Events 申込枠: Workshops と同じ表示 */
+.table-free-events .cta-cell,
+.table-workshops .cta-cell { min-width: 140px; }
+.table-free-events .btn-free-event {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #e67e22;
+  border: 1px solid #e67e22;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.table-free-events .btn-free-event:hover {
+  background-color: #d96d15;
+  color: #fff;
+  border-color: #d96d15;
+}
+
+/* Workshops表: 申込ボタン */
+.table-workshops .cta-cell { vertical-align: middle; text-align: center; }
+.table-workshops .btn-free-event {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #e67e22;
+  border: 1px solid #e67e22;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.table-workshops .btn-free-event:hover {
+  background-color: #d96d15;
+  color: #fff;
+  border-color: #d96d15;
+}
+@media (min-width: 769px) {
+  .table-workshops th.col-cta { width: 1%; white-space: nowrap; }
+}
+
+@media (min-width: 769px) {
+  .table-free-events .content-inline { white-space: nowrap; }
+  .table-free-events .lecturer:not(.lecturer-two) { white-space: nowrap; }
+  #free-events .table-free-events .content-inline { white-space: normal; }
+  /* Free Events 申込枠: Workshops と同じ幅・表示 */
+  .table-free-events th.col-cta,
+  .table-workshops th.col-cta { width: 1%; min-width: 120px; white-space: nowrap; }
+}
+
+/* --- Venue Box --- */
+.venue-box {
+  background: #f9f9f9;
+  padding: 50px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #eee;
+  transition: all 0.3s;
+}
+
+.theme-basic .venue-box:hover { border-color: #6c9a93; }
+.theme-advance .venue-box:hover { border-color: #c5a059; }
+.theme-workshop .venue-box:hover { border-color: #e67e22; }
+
+.venue-box:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+.venue-list { display: flex; flex-direction: column; gap: 20px; }
+.venue-list .venue-item { margin-bottom: 0; }
+
+.venue-name { font-size: 20px; margin-bottom: 10px; font-weight: 700; }
+.venue-address { font-size: 15px; margin-bottom: 20px; color: #555; }
+.venue-access { font-size: 14px; line-height: 1.8; color: #666; margin-bottom: 25px; }
+
+.map-link {
+  display: inline-block;
+  font-size: 14px;
+  padding-bottom: 2px;
+  font-family: 'Lato', sans-serif;
+  transition: opacity 0.3s;
+  border-bottom: 1px solid;
+}
+
+.theme-basic .map-link { color: #6c9a93; border-color: #6c9a93; }
+.theme-advance .map-link { color: #c5a059; border-color: #c5a059; }
+.theme-workshop .map-link { color: #e67e22; border-color: #e67e22; }
+.map-link:hover { opacity: 0.7; }
+
+/* --- Alert Box --- */
+.alert-section { margin-top: 60px; }
+.theme-basic .alert-section { margin-top: 80px; }
+
+.alert-box {
+  padding: 40px;
+  position: relative;
+  background-color: #fff;
+}
+
+.theme-basic .alert-box { border: 2px solid #c0392b; }
+.theme-advance .alert-box { border: 2px solid #c5a059; }
+
+.alert-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-basic .alert-title { color: #c0392b; }
+.theme-basic .alert-title::before {
+  content: '!';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px; height: 24px;
+  background: #c0392b;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.theme-advance .alert-title { color: #c5a059; }
+.theme-advance .alert-title::before {
+  content: 'Req';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px; height: 34px;
+  background: #c5a059;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 10px;
+  flex-shrink: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.alert-content ul { padding-left: 20px; margin: 0; }
+.alert-content li { margin-bottom: 8px; font-size: 14px; line-height: 1.8; list-style-type: disc; }
+
+/* --- CTA Area --- */
+.cta-area {
+  margin-top: 100px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+.price-label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #666;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.theme-workshop .price-label { margin-bottom: 20px; }
+
+.price-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 50px;
+}
+
+.price-main .tax { font-size: 16px; font-family: 'Noto Serif JP', serif; color: #999; }
+.price-note { font-size: 12px; color: #999; margin-top: -30px; margin-bottom: 50px; }
+
+.price-list-box {
+  display: inline-block;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  padding: 30px 50px;
+  margin-bottom: 50px;
+  text-align: left;
+  min-width: 350px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #eee;
+  padding: 15px 0;
+  gap: 40px;
+}
+
+.price-row:last-child { border-bottom: none; }
+.p-name { font-size: 14px; color: #555; }
+.p-val { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; color: #333; }
+.p-val .tax { font-size: 12px; font-family: 'Noto Serif JP', serif; }
+
+/* ワークショップ情報表 (項目・詳細) */
+.ws-info-table-wrapper { margin-bottom: 50px; text-align: center; }
+.ws-info-table-wrapper .section-heading { margin-bottom: 40px; }
+.ws-info-table {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.ws-info-table th,
+.ws-info-table td {
+  padding: 18px 24px;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #eee;
+  line-height: 1.7;
+}
+.ws-info-table th {
+  background-color: #eef9f6;
+  font-weight: 600;
+  color: #333;
+  width: 28%;
+  font-size: 15px;
+}
+.ws-info-table td.col-detail { color: #444; font-size: 15px; }
+.ws-info-table td.col-detail p { margin: 0 0 6px; line-height: 1.75; }
+.ws-info-table td.col-detail p:last-child { margin-bottom: 0; }
+.ws-info-table .price-accent { color: #c0392b; font-weight: 700; font-size: 17px; }
+.ws-info-table tbody tr:hover { background-color: #fafafa; }
+
+/* eventページ: ワークショップ表をトンマナ統一・文字数に応じた横幅・見やすく */
+.theme-workshop .ws-info-table-wrapper { display: block; }
+.theme-workshop .ws-info-table {
+  width: auto;
+  max-width: 100%;
+  min-width: 360px;
+  table-layout: auto;
+  border-color: rgba(230, 126, 34, 0.2);
+  font-size: 15px;
+}
+.theme-workshop .ws-info-table th,
+.theme-workshop .ws-info-table td {
+  padding: 20px 28px;
+  border-color: rgba(230, 126, 34, 0.15);
+}
+.theme-workshop .ws-info-table th {
+  background-color: rgba(230, 126, 34, 0.1);
+  color: #333;
+  width: 1%;
+  white-space: nowrap;
+  font-size: 15px;
+}
+.theme-workshop .ws-info-table td.col-detail { color: #444; font-size: 15px; }
+.theme-workshop .ws-info-table td.col-detail p { margin: 0 0 8px; line-height: 1.8; }
+.theme-workshop .ws-info-table .price-accent { color: #e67e22; font-size: 18px; }
+.theme-workshop .ws-info-table tbody tr:hover { background-color: rgba(230, 126, 34, 0.03); }
+
+.cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 40px; }
+
+.cta-recommend { position: relative; width: 100%; max-width: 500px; }
+.cta-workshop-buttons { max-width: 700px; }
+.ws-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+.btn-ws-cta { min-width: 0; }
+@media (max-width: 768px) {
+  .ws-cta-grid { grid-template-columns: 1fr; }
+  .cta-workshop-buttons { max-width: 100%; }
+}
+
+.recommend-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  z-index: 10;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.theme-basic .recommend-badge { background: #6c9a93; }
+.theme-advance .recommend-badge { background: #c5a059; }
+.theme-workshop .recommend-badge { background: #b88a5a; }
+
+.recommend-text {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  display: block;
+  line-height: 1.6;
+}
+
+.theme-basic .recommend-text { color: #c0392b; }
+.theme-advance .recommend-text { color: #c0392b; }
+.theme-workshop .recommend-text { color: #5a7c6f; }
+
+.btn-main-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 25px 20px;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Basic: 緑ベース、ホバーで浮き上がり＋少し濃く */
+.theme-basic .btn-main-cta {
+  background-color: #6c9a93;
+  color: #fff;
+  border: 1px solid #6c9a93;
+}
+.theme-basic .btn-main-cta:hover {
+  background-color: #5a8a82;
+  color: #fff;
+  border-color: #5a8a82;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(108,154,147,0.35);
+}
+
+/* Advance: ゴールドベース、ホバーで浮き上がり＋少し濃く */
+.theme-advance .btn-main-cta {
+  background-color: #c5a059;
+  color: #fff;
+  border: 1px solid #c5a059;
+}
+.theme-advance .btn-main-cta:hover {
+  background-color: #b08d45;
+  color: #fff;
+  border-color: #b08d45;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(197,160,89,0.35);
+}
+
+/* Workshop: トンマナ統一（course-label, section accentと同じオレンジ） */
+.theme-workshop .btn-main-cta {
+  background-color: #e67e22;
+  color: #fff;
+  border: 1px solid #e67e22;
+}
+.theme-workshop .btn-main-cta:hover {
+  background-color: #d96d15;
+  color: #fff;
+  border-color: #d96d15;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(230,126,34,0.35);
+}
+
+.btn-main-cta .sub-text { font-size: 12px; margin-top: 8px; opacity: 0.8; font-weight: 300; }
+
+.cta-sub { width: 100%; max-width: 400px; }
+.sub-cta-text { font-size: 12px; color: #888; margin-bottom: 12px; }
+
+.btn-sub-cta {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  background: transparent;
+  border: 1px solid #ccc;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.cta-area-small .btn-sub-cta {
+  display: inline-block;
+  width: auto;
+  padding: 15px 30px;
+  min-width: 240px;
+  text-align: center;
+  background: #fff;
+}
+
+.btn-sub-cta:hover { background: #f5f5f5; color: #333; border-color: #333; }
+
+.cta-area-small {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+/* YouTubeチャンネル誘導バナー */
+.youtube-banner {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.youtube-banner-link {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.youtube-banner-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.youtube-banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.youtube-banner + .cta-area-small {
+  margin-top: 24px;
+}
+
+/* Animation */
+.js-anim-item { opacity: 0; transform: translateY(20px); transition: opacity 0.8s, transform 0.8s; }
+.js-anim-section.is-visible .js-anim-item { opacity: 1; transform: translateY(0); }
+
+/* --- Footer は common.css の .site-footer で定義 --- */
+
+/* ========================================
+   Responsive (768px以下)
+   ======================================== */
+@media (max-width: 768px) {
+  .pc-only { display: none; }
+  .sp-only { display: block; }
+  br.sp-only { display: block; }
+
+  .content-container { padding: 0 16px; box-sizing: border-box; }
+  .course-header { padding: 15px 20px; }
+  .course-desktop-nav { display: none; }
+  .course-hamburger { display: block; }
+
+  .page-hero { padding: 140px 20px 60px; }
+  .hero-bg-text { font-size: 15vw; }
+  .page-title { font-size: 28px; }
+  .course-label { font-size: 11px; }
+
+  .detail-section { margin-top: 80px; }
+  .section-heading { font-size: 24px; }
+
+  .schedule-table thead { display: none; }
+
+  .schedule-table,
+  .schedule-table tbody,
+  .schedule-table tr,
+  .schedule-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .schedule-table tr {
+    margin-bottom: 25px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    overflow: hidden;
+  }
+
+  .schedule-table tr.highlight-row {
+    background-color: #fffaf0;
+    border-color: #ffe0b2;
+  }
+
+  .schedule-table .count {
+    background: transparent;
+    padding: 32px 20px 15px;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    border-bottom: 1px dashed #ddd;
+    margin: 0;
+  }
+
+  .theme-workshop .schedule-table .count { text-align: left; }
+
+  .schedule-table td {
+    position: relative;
+    padding: 10px 20px 10px 100px;
+    border-bottom: none;
+    text-align: left;
+    min-height: 44px;
+  }
+
+  .schedule-table td:last-child { padding-bottom: 25px; }
+
+  .schedule-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+    width: 70px;
+  }
+
+  .theme-workshop .schedule-table td[data-label="内容"]::before { display: none; }
+  .theme-workshop .schedule-table td[data-label="内容"] { padding-left: 20px; }
+  /* Free Events・Workshops 申込: ラベルは不要、ボタンのみ表示 */
+  .table-free-events .cta-cell,
+  .table-workshops .cta-cell {
+    text-align: center;
+    padding: 20px 16px 24px !important;
+  }
+  .table-free-events .cta-cell::before,
+  .table-workshops .cta-cell::before { display: none; }
+  .table-free-events .btn-free-event,
+  .table-workshops .btn-free-event {
+    width: 100%;
+    max-width: 280px;
+    padding: 14px 24px;
+    font-size: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-block;
+  }
+
+  /* Free Events SP: 種別・タグの重なりを解消し見やすく */
+  .table-free-events tr { margin-bottom: 28px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .table-free-events .schedule-table td {
+    padding: 14px 16px 14px 90px;
+    min-height: 48px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .table-free-events td::before {
+    width: 75px;
+    font-size: 11px;
+    color: #888;
+  }
+  /* 種別セル: ラベル非表示、タグのみ表示（重なり解消） */
+  .table-free-events td[data-label="種別"]::before { display: none; }
+  .table-free-events .count {
+    padding: 16px 16px 14px;
+    font-size: 18px;
+    border-bottom: 1px dashed rgba(0,0,0,0.08);
+    padding-left: 16px;
+  }
+  .table-free-events .count .tag { font-size: 11px; padding: 6px 14px; }
+  .table-free-events .date { font-size: 15px; font-weight: 700; }
+  .table-free-events .time { font-size: 14px; }
+  .table-free-events .lecturer { font-size: 14px; line-height: 1.5; }
+  .table-free-events .content-inline { font-size: 14px; padding-left: 16px !important; line-height: 1.4; }
+  .table-free-events .content-inline strong { display: block; margin-bottom: 0; }
+  .table-free-events .note-inline { font-size: 12px; margin-top: 0; display: block; }
+
+  .content-cell { display: block; }
+  .content-cell .tag { margin-bottom: 5px; }
+  .content-cell .text { display: block; margin-top: 5px; }
+
+  .alert-text { display: inline-block; margin-left: 8px; font-size: 11px; }
+  .note-text { text-align: left; margin-top: 10px; }
+  .table-workshops td .note-text { color: #333; font-weight: 700; font-size: 14px; }
+
+  .venue-box { padding: 30px 20px; }
+  .alert-box { padding: 30px 20px; }
+  .alert-title { font-size: 16px; }
+
+  .cta-area { padding-top: 60px; margin-top: 80px; }
+  .price-main { font-size: 32px; margin-bottom: 40px; }
+
+  .cta-recommend { max-width: 100%; }
+  .recommend-text { margin-top: 35px; font-size: 14px; margin-bottom: 15px; }
+  .btn-main-cta { font-size: 16px; padding: 20px; }
+
+  .price-list-box { width: 100%; padding: 20px; box-sizing: border-box; }
+  .price-row { gap: 15px; padding: 15px 0; }
+  .p-name { font-size: 13px; }
+  .p-val { font-size: 20px; }
+  .btn-sub-cta { width: 100%; margin-bottom: 10px; box-sizing: border-box; }
+
+  .youtube-banner { margin-top: 30px; }
+  .youtube-banner-link { max-width: 100%; border-radius: 6px; }
+  .youtube-banner + .cta-area-small { margin-top: 20px; }
+
+  .ws-info-table th,
+  .ws-info-table td { padding: 12px 15px; font-size: 13px; }
+  .ws-info-table .price-accent { font-size: 15px; }
+
+  /* ワークショップ受講料: 表示・画面内に収める */
+  .theme-workshop .ws-info-table-wrapper {
+    padding: 0 12px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .theme-workshop .ws-info-table {
+    width: 100%;
+  }
+  .theme-workshop .ws-info-table td.col-detail {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+  .theme-workshop .ws-info-table-wrapper .section-heading {
+    font-size: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+  .theme-workshop .ws-info-table {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    font-size: 13px;
+  }
+  .theme-workshop .ws-info-table th,
+  .theme-workshop .ws-info-table td {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .theme-workshop .ws-info-table th.col-item {
+    width: 28%;
+    white-space: normal;
+    font-size: 12px;
+  }
+  .theme-workshop .ws-info-table th.col-detail,
+  .theme-workshop .ws-info-table td.col-detail {
+    width: 72%;
+    min-width: 120px;
+    line-height: 1.6;
+  }
+  .theme-workshop .ws-info-table td.col-detail p {
+    margin: 0 0 4px;
+    line-height: 1.6;
+  }
+  .theme-workshop .ws-info-table td.col-detail p:last-child { margin-bottom: 0; }
+  .theme-workshop .ws-info-table .price-accent { font-size: 14px; }
+}
