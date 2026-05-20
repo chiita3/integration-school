@@ -945,7 +945,7 @@ get_header('course');
       <h2 class="section-heading js-anim-item">Plans & Fees</h2>
       <p class="section-lead js-anim-item">ご希望に合わせて選べるプラン</p>
 
-      <div class="special-offer-box js-anim-item">
+      <!--       <div class="special-offer-box js-anim-item">
         <div class="offer-badge">EARLY SPECIAL</div>
         <h3 class="offer-title">
           多次元統合療法 フルセット 早割（全12日間）
@@ -974,14 +974,14 @@ get_header('course');
           ・9/23(水) 11:00〜18:00　テーマ：『本当の私を生きる ― 真の自分を表現する勇気』
         </p>
         <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-furusetto-zen12nichikan-1" target="_blank" rel="noopener" class="btn-plan btn-rec" style="max-width: 400px; margin: 30px auto 0; display: block; text-align: center;">このプランを選ぶ</a>
-      </div>
+      </div> -->
 
       <div class="price-grid js-anim-item">
 
         <div class="price-card">
           <div class="card-header">
             <span class="plan-name">多次元統合療法 ベーシックコース(全5日間)</span>
-            <span class="plan-sub">ベーシック単体</span>
+            <!-- <span class="plan-sub">ベーシック単体</span> -->
           </div>
           <div class="card-price">
             ¥165,000<span class="tax">(税込)</span>
@@ -993,19 +993,24 @@ get_header('course');
           <a href="https://www.ohnoyuriko.com/event-details/torishia-shadouwakushoppu-11-29-do-17jishimekiri-2-1" target="_blank" rel="noopener" class="btn-plan">このプランを選ぶ</a>
         </div>
 
-        <div class="price-card price-card--gold">
+        <!-- <div class="price-card price-card--gold"> -->
+        <div class="price-card">
           <div class="card-header">
-            <span class="plan-name">多次元統合療法 ベーシック＋アドバンス 早割 (全10日間)</span>
+            <!-- <span class="plan-name">多次元統合療法 ベーシック＋アドバンス 早割 (全10日間)</span> -->
+            <span class="plan-name">多次元統合療法 ベーシック＋アドバンス (全10日間)</span>
           </div>
-          <div class="card-price highlight">
-            ¥297,000<span class="tax">(税込)</span>
+          <!-- <div class="card-price highlight"> -->
+          <div class="card-price">
+            <!-- ¥297,000<span class="tax">(税込)</span> -->
+            ¥330,000<span class="tax">(税込)</span>
           </div>
           <ul class="plan-features">
             <li>全10日間 (Zoom/対面)</li>
             <li>アーカイブ視聴、修了証発行</li>
           </ul>
-          <p class="plan-note">※早割の適用は5/20（水）23:59まで</p>
-          <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-beshikkukosutasuadobansukosu-zen10nichikan-1" target="_blank" rel="noopener" class="btn-plan btn-rec">このプランを選ぶ</a>
+          <!-- <p class="plan-note">※早割の適用は5/20（水）23:59まで</p> -->
+          <!-- <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-beshikkutasuadobansu-hayawari-zen10nichikan-1-1" target="_blank" rel="noopener" class="btn-plan btn-rec">このプランを選ぶ</a> -->
+          <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-beshikkutasuadobansu-hayawari-zen10nichikan-1-1" target="_blank" rel="noopener" class="btn-plan">このプランを選ぶ</a>
         </div>
 
         <div class="price-card retake">
@@ -1201,7 +1206,7 @@ get_header('course');
           </div>
         </a>
 
-        <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-beshikkukosutasuadobansukosu-zen10nichikan-1" target="_blank" rel="noopener" class="pay-btn gold">
+        <!--         <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-beshikkukosutasuadobansukosu-zen10nichikan-1" target="_blank" rel="noopener" class="pay-btn gold">
           <div class="pay-btn-info">
             <span class="btn-main">多次元統合療法 ベーシック＋アドバンス 早割 (全10日間)<br>に申し込む</span>
             <span class="pay-btn-note">※早割の適用は5/20（水）23:59まで</span>
@@ -1209,15 +1214,32 @@ get_header('course');
           <div class="pay-btn-price">
             ¥297,000 <span class="tax">(税込)</span> <span class="arrow-icon">→</span>
           </div>
+        </a> -->
+        <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-beshikkutasuadobansu-hayawari-zen10nichikan-1-1" target="_blank" rel="noopener" class="pay-btn">
+          <div class="pay-btn-info">
+            <span class="btn-main">多次元統合療法 ベーシック＋アドバンス<br>(全10日間)に申し込む</span>
+          </div>
+          <div class="pay-btn-price">
+            ¥330,000 <span class="tax">(税込)</span> <span class="arrow-icon">→</span>
+          </div>
         </a>
 
-        <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-furusetto-zen12nichikan-1" target="_blank" rel="noopener" class="pay-btn gold">
+
+        <!--         <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-furusetto-zen12nichikan-1" target="_blank" rel="noopener" class="pay-btn gold">
           <div class="pay-btn-info">
             <span class="btn-main">多次元統合療法 フルセット 早割 (全12日間)<br>に申し込む</span>
             <span class="pay-btn-note">※早割の適用は5/20（水）23:59まで</span>
           </div>
           <div class="pay-btn-price">
             ¥330,000 <span class="tax">(税込)</span> <span class="arrow-icon">→</span>
+          </div>
+        </a> -->
+        <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryohofurusetto-hayawari-zen12nichikan-1" target="_blank" rel="noopener" class="pay-btn">
+          <div class="pay-btn-info">
+            <span class="btn-main">多次元統合療法 フルセット(全12日間)<br>に申し込む</span>
+          </div>
+          <div class="pay-btn-price">
+            ¥363,000 <span class="tax">(税込)</span> <span class="arrow-icon">→</span>
           </div>
         </a>
 

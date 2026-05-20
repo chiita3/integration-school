@@ -169,7 +169,7 @@
     </div>
     <div class="program-footer-btn js-program-item">
       <a href="<?php echo home_url('/summary/'); ?>" class="btn-primary">スケジュール・料金・募集要項を見る</a>
-      <p class="notice-text">※お得なセット割引・早割キャンペーン実施中<br class="sp-only">（5/20まで）</p>
+      <!-- <p class="notice-text">※お得なセット割引・早割キャンペーン実施中<br class="sp-only">（5/20まで）</p> -->
     </div>
   </div>
 </section>
