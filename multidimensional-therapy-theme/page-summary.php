@@ -1013,6 +1013,20 @@ get_header('course');
           <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryoho-beshikkutasuadobansu-hayawari-zen10nichikan-1-1" target="_blank" rel="noopener" class="btn-plan">このプランを選ぶ</a>
         </div>
 
+        <div class="price-card">
+          <div class="card-header">
+            <span class="plan-name">多次元統合療法フルセット (全12日間)</span>
+          </div>
+          <div class="card-price">
+            ¥363,000<span class="tax">(税込)</span>
+          </div>
+          <ul class="plan-features">
+            <li>全12日間 (Zoom/対面)</li>
+            <li>アーカイブ視聴、修了証発行</li>
+          </ul>
+          <a href="https://www.ohnoyuriko.com/event-details/tajigentogoryohofurusetto-hayawari-zen12nichikan-1" target="_blank" rel="noopener" class="btn-plan">このプランを選ぶ</a>
+        </div>
+
         <div class="price-card retake">
           <div class="retake-info">
             <span class="plan-name">Re-take Plan</span>
