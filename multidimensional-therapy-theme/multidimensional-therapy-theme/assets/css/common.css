@@ -1,0 +1,494 @@
+/* ========================================
+   全ページ共通 ヘッダー・フッター
+   TOPページとコースページで共用
+   ======================================== */
+
+/* 全ページ横はみ出し防止 */
+html, body { overflow-x: hidden; max-width: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* --- Header Base --- */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* TOPページ用: 常にダーク背景のヘッダーバー（FVの上に表示） */
+body.top-page header,
+body.top-page header.scrolled,
+body.home header:not(.header-light),
+body.home header:not(.header-light).scrolled {
+  background-color: #333;
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* サブページ用: スクロール時 */
+header.scrolled {
+  background-color: rgba(51, 51, 51, 0.95);
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* サブページ用: 常に白背景・ダークテキスト */
+header.header-light,
+header.header-light.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  color: #333;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+  padding: 20px 40px;
+}
+
+header.header-light.scrolled {
+  padding: 15px 40px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+header.header-light .logo,
+header.header-light .logo a,
+header.header-light nav a,
+header.header-light .main-menu a {
+  color: #333 !important;
+}
+
+header.header-light .hamburger span {
+  background-color: #333 !important;
+}
+
+/* TOPページ: ヘッダー上の白テキスト・ロゴ */
+body.top-page header .logo a,
+body.home header:not(.header-light) .logo a {
+  color: #fff;
+}
+body.top-page header .hamburger span,
+body.home header:not(.header-light) .hamburger span {
+  background-color: #fff !important;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: 'Lato', sans-serif;
+  z-index: 101;
+}
+
+.logo a { text-decoration: none; color: inherit; display: block; }
+.logo-img { display: block; height: 14px; width: auto; object-fit: contain; }
+
+/* Navigation PC */
+nav { transition: all 0.4s ease; }
+.mobile-mypage-btn, .nav-divider, .sub-menu-group { display: none; }
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  align-items: center;
+}
+
+nav li {
+  font-size: 13px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+nav a { text-decoration: none; color: inherit; }
+nav a:hover { opacity: 0.8; }
+
+header.header-light nav a:hover { color: #6c9a93; }
+
+/* 受講コース ドロップダウン (PC) - トグルで縦表示 */
+.has-dropdown {
+  position: relative;
+}
+.has-dropdown > a {
+  cursor: pointer;
+}
+.has-dropdown > a::after {
+  content: '';
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform 0.2s;
+}
+.has-dropdown.is-open > a::after {
+  transform: rotate(180deg);
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  min-width: 200px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 110;
+}
+.has-dropdown.is-open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+.dropdown-menu li {
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.dropdown-menu li:last-child { border-bottom: none; }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 12px;
+  color: #333;
+  white-space: nowrap;
+}
+.dropdown-menu a:hover {
+  background: #f8f8f8;
+  opacity: 1;
+}
+header:not(.header-light) .dropdown-menu a { color: #333; }
+header:not(.header-light) .dropdown-menu a:hover { color: #6c9a93; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 101;
+  width: 30px;
+  height: 20px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+/* --- Footer --- */
+.site-footer {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #a4c9c4 0%, #9bbdb8 100%);
+  padding: 80px 20px 40px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.footer-logo a { text-decoration: none; color: inherit; display: block; }
+.footer-logo .logo-img { display: block; max-height: 22px; width: auto; margin: 0 auto; object-fit: contain; }
+
+.footer-nav { margin-bottom: 40px; width: 100%; }
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.footer-links li a:hover { opacity: 0.7; }
+
+.footer-sns {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.sns-link { display: block; transition: opacity 0.3s; }
+.sns-link:hover { opacity: 0.7; }
+
+.sns-link img {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 6px;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-copyright {
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+.footer-co-organizer {
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.footer-banner { width: 100%; max-width: 900px; }
+
+.footer-banner a { display: block; transition: opacity 0.3s; }
+.footer-banner a:hover { opacity: 0.8; }
+
+.footer-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   Header & Footer Responsive (768px以下)
+   ======================================== */
+header.active .logo,
+header.active .logo a { color: #333 !important; }
+header.active .hamburger span { background-color: #333 !important; }
+
+@media (max-width: 768px) {
+  .mobile-mypage-btn, .nav-divider, .sub-menu-group { display: block; }
+
+  .logo .logo-img { transform: scale(0.75); transform-origin: left center; }
+
+  header.header-light,
+  header.header-light.scrolled { padding: 15px 20px; }
+  header.header-light.scrolled { padding: 10px 20px; }
+
+  .hamburger { display: block; z-index: 200; }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    color: #333;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    z-index: 150;
+    padding-top: 80px;
+    overflow-y: auto;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  nav.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-inner {
+    padding: 0 30px 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-mypage-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #6c9a93;
+    color: #6c9a93;
+    padding: 12px 0;
+    font-family: 'Noto Serif JP', serif;
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  ul.main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 40px;
+    list-style: none;
+  }
+
+  ul.main-menu li {
+    width: 100%;
+    text-align: center;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding: 18px 0;
+  }
+
+  ul.main-menu li:last-child {
+    border-bottom: none;
+  }
+
+  ul.main-menu a {
+    color: #333;
+    display: block;
+  }
+
+  /* 受講コース ドロップダウン (SP) - トグルで縦表示 */
+  /* トップと受講コースの間の線は常に表示 */
+  ul.main-menu li:has(+ li.has-dropdown) { border-bottom: 1px solid #eee; }
+  /* 閉じている時は受講コースの下の線を非表示、開いている時のみ表示 */
+  .has-dropdown { border-bottom: none; }
+  .has-dropdown.is-open > a { border-bottom: 1px solid #eee; }
+  .has-dropdown > a::after {
+    border-top-color: #333;
+  }
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    display: none;
+    flex-direction: column;
+    box-shadow: none;
+    background: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+  .has-dropdown.is-open .dropdown-menu {
+    display: flex;
+  }
+  .dropdown-menu li { border-bottom: 1px solid #eee; }
+  .dropdown-menu li:last-child { border-bottom: 1px solid #eee; }
+  .dropdown-menu a {
+    padding: 4px 20px 4px 36px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .nav-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0 30px;
+  }
+
+  .sub-menu-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sub-menu-group p,
+  .sub-menu-group a {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    display: block;
+  }
+  .sub-menu-group a:hover { opacity: 0.7; }
+
+  .sub-menu-group.legal-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .sub-menu-group.legal-links p,
+  .sub-menu-group.legal-links a {
+    font-size: 11px;
+    color: #666;
+    text-decoration: none;
+    display: block;
+  }
+  .sub-menu-group.legal-links a:hover { opacity: 0.7; }
+
+  .hamburger.active span { background-color: #333 !important; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg); top: 9px; }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg); bottom: 9px; }
+
+  /* Footer SP */
+  .site-footer { padding: 60px 20px 60px; }
+  .footer-logo { font-size: 32px; margin-bottom: 30px; }
+  .footer-links {
+    flex-direction: row;
+    max-width: 320px;
+    margin: 0 auto 40px;
+    gap: 15px 20px;
+  }
+  .footer-links li a { font-size: 12px; }
+  .footer-sns { gap: 10px; }
+  .sns-link img {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
+  }
+}
